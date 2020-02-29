@@ -5,7 +5,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="keywords" content="Python装饰器理解, 逍遥子">
-    <meta name="description" content="前言本文根据这儿的学习资源加上自己的理解整理而成。本文适合对装饰器完全陌生的小白，为了搞清来龙去脉，会比较啰嗦，请读者根据需要选择食用。之前在书上看了装饰器(decorator)的介绍，第一感觉有点像数学中泛函的概念，由于不经常使用装饰器，">
+    <meta name="description" content="前言本文根据这儿的学习资源加上自己的理解整理而成。本文适合对装饰器完全陌生的小白，为了搞清来龙去脉，会比较啰嗦，请读者根据需要选择食用。如果你只想看一句话：在某个函数func上面加个装饰器(这本质也是一个函数)，你会原封不动的得到这个函数f">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -572,9 +572,9 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>本文根据<a href="https://github.com/Computing-Intelligence/jupyters_and_slides" target="_blank" rel="noopener">这儿</a>的学习资源加上自己的理解整理而成。本文适合对装饰器完全陌生的小白，为了搞清来龙去脉，会比较啰嗦，请读者根据需要选择食用。<br>之前在书上看了<strong>装饰器(decorator)</strong>的介绍，第一感觉有点像数学中泛函的概念，由于不经常使用装饰器，理解始终不够透彻。现在趁这个学习的机会，整理记录一下思路，加深理解。<br>&nbsp;<br>有位大佬说过：抽象是计算机科学的灵魂。要深入的理解，而不是仅仅依葫芦画瓢使用的话，那么装饰器还得从<em>编程思维</em>(或编程范式)讲起。都说Python同时是面向过程(procedure-oriented)、面向函数(function-oriented)和面向对象(object-oriented)的。这里的<em>面向</em>到底是什么意思，这些术语的由来是什么呢？<br>举例简单说明下。<strong>面向过程</strong>(procedure也有人叫做流程)是指将一个任务拆分成一条一条的指令，按流程一步步做完就完成了。比如如何煎鸡蛋，先拿碗–把蛋打好–搅匀–锅烧热–…..按流程一直做下来不出错，你就能完成任务。<br>&nbsp;<br><strong>面向函数</strong>比面向过程稍抽象一层，它将任务分割为若干个小任务，只要按一定的顺序完成小任务，那么最终也能完成任务。比如造一辆车，可以将它分割为造轮子，造引擎，造方向盘，造座位……直到最终完成一辆车。<br>&nbsp;<br>而<strong>面向对象</strong>比面向函数更抽象一层，对于一个任务，它首先分析其中的共性或者模式，然后按各个模式做出具体实例。还是拿造车为例，这次不只是一辆，而可能要造各种各样的车，然后我发现车都有轮子、引擎、座位等等，那么我首先做一个制造轮子的机器，只有我稍微调整仪表板，这个机器就能造出具有不同材质、大小、颜色等等属性的轮子；同样，我再制造引擎机器、座位机器等等。甚至我可以将抽象再升级一层，我把前面哪些小机器整合成一个超级造车机器(这个机器对应一个术语叫做类, class)，我想要什么样的车，只需要将机器仪表板上的按钮调到适当的位置即可。这种路子就是面向对象。你可以发现，对于一些特别巨大的任务，面向对象相比前面两种路子，能省去大量重复工作。<br>&nbsp;<br>当然，这儿并不是说那种路子好，没有这回事，还是看你的任务是什么。网上有关于这三种编程范式更详细的介绍，感兴趣的话可以去搜一下。  </p>
+                <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>本文根据<a href="https://github.com/Computing-Intelligence/jupyters_and_slides" target="_blank" rel="noopener">这儿</a>的学习资源加上自己的理解整理而成。本文适合对装饰器完全陌生的小白，为了搞清来龙去脉，会比较啰嗦，请读者根据需要选择食用。<br><u>如果你只想看一句话</u>：在某个函数<code>func</code>上面加个装饰器(这本质也是一个函数)，你会原封不动的得到这个函数<code>func</code>，但<code>func</code>同时具备了一些额外的功能(即装饰性的功能)。<br>&nbsp;<br>之前在书上看了<strong>装饰器(decorator)</strong>的介绍，第一感觉有点像数学中泛函的概念，由于不经常使用装饰器，理解始终不够透彻。现在趁这个学习的机会，整理记录一下思路，加深理解。<br>&nbsp;<br>有位大佬说过：抽象是计算机科学的灵魂。要深入的理解，而不是仅仅依葫芦画瓢使用的话，那么装饰器还得从<em>编程思维</em>(或编程范式)讲起。都说Python同时是面向过程(procedure-oriented)、面向函数(function-oriented)和面向对象(object-oriented)的。这里的<em>面向</em>到底是什么意思，这些术语的由来是什么呢？<br>举例简单说明下。<strong>面向过程</strong>(procedure也有人叫做流程)是指将一个任务拆分成一条一条的指令，按流程一步步做完就完成了。比如如何煎鸡蛋，先拿碗–把蛋打好–搅匀–锅烧热–…..按流程一直做下来不出错，你就能完成任务。<br>&nbsp;<br><strong>面向函数</strong>比面向过程稍抽象一层，它将任务分割为若干个小任务，只要按一定的顺序完成小任务，那么最终也能完成任务。比如造一辆车，可以将它分割为造轮子，造引擎，造方向盘，造座位……直到最终完成一辆车。<br>&nbsp;<br>而<strong>面向对象</strong>比面向函数更抽象一层，对于一个任务，它首先分析其中的共性或者模式，然后按各个模式做出具体实例。还是拿造车为例，这次不只是一辆，而可能要造各种各样的车，然后我发现车都有轮子、引擎、座位等等，那么我首先做一个制造轮子的机器，只有我稍微调整仪表板，这个机器就能造出具有不同材质、大小、颜色等等属性的轮子；同样，我再制造引擎机器、座位机器等等。甚至我可以将抽象再升级一层，我把前面哪些小机器整合成一个超级造车机器(这个机器对应一个术语叫做类, class)，我想要什么样的车，只需要将机器仪表板上的按钮调到适当的位置即可。这种路子就是面向对象。你可以发现，对于一些特别巨大的任务，面向对象相比前面两种路子，能省去大量重复工作。<br>&nbsp;<br>当然，这儿并不是说那种路子好，没有这回事，还是看你的任务是什么。网上有关于这三种编程范式更详细的介绍，感兴趣的话可以去搜一下。  </p>
 <h2 id="装饰器"><a href="#装饰器" class="headerlink" title="装饰器"></a>装饰器</h2><p>话说回来，Python面向函数的特性使得函数可以作为变量，可以作为参数，可以作为返回值…，那么，说了这些，和装饰器有啥联系呢？下面我们通过一个问题来引出装饰器。<br>&nbsp;  </p>
-<h3 id="质数查找问题"><a href="#质数查找问题" class="headerlink" title="质数查找问题"></a>质数查找问题</h3><p><strong>给你一个自然数n <em>(n &gt; 1)</em>，请给出 &lt; n的所有所有质数。</strong><br>&nbsp;<br>怎么做呢？一个比较直观粗暴的思路就是，我从1开始一直到n，挨个判断这些数是否是质数，每发现一个质数就将它保存下来。(提醒：质数是指只能被1和自身整除的自然数。)<br>那么第一步，我需要一个函数来判断某个数是否为质数。这儿我们给出一种低效和一种更高效的实现：  </p>
+<h3 id="质数查找问题"><a href="#质数查找问题" class="headerlink" title="质数查找问题"></a>质数查找问题</h3><p><strong>给你一个自然数n <em>(n &gt; 1)</em>，请给出 &lt; n的所有质数。</strong><br>&nbsp;<br>怎么做呢？一个比较直观粗暴的思路就是，我从1开始一直到n，挨个判断这些数是否是质数，每发现一个质数就将它保存下来。(提醒：质数是指只能被1和自身整除的自然数。)<br>那么第一步，我需要一个函数来判断某个数是否为质数。这儿我们给出一种低效和一种更高效的实现：  </p>
 <pre class=" language-python"><code class="language-python"><span class="token keyword">def</span> <span class="token function">is_primer_low</span><span class="token punctuation">(</span>n<span class="token punctuation">)</span><span class="token punctuation">:</span>
     <span class="token triple-quoted-string string">"""低效判断n是否为质数"""</span>
     <span class="token keyword">if</span> n <span class="token operator">&lt;</span> <span class="token number">2</span><span class="token punctuation">:</span> <span class="token keyword">return</span> <span class="token boolean">False</span>
@@ -1063,7 +1063,7 @@ get_primers_with_decorator<span class="token punctuation">(</span>n<span class="
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            前言本文根据这儿的学习资源加上自己的理解整理而成。本文适合对装饰器完全陌生的小白，为了搞清来龙去脉，会比较啰嗦，请读者根据需要选择食用。之前在书上看了装饰器(decorator)的介绍，第一感觉有点像数学中泛函的概念，由于不经常使用装饰器，
+                            前言本文根据这儿的学习资源加上自己的理解整理而成。本文适合对装饰器完全陌生的小白，为了搞清来龙去脉，会比较啰嗦，请读者根据需要选择食用。如果你只想看一句话：在某个函数func上面加个装饰器(这本质也是一个函数)，你会原封不动的得到这个函数f
                         
                     </div>
                     <div class="publish-info">
