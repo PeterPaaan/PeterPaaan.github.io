@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://peterpaaan.github.io/"/>
-  <updated>2020-02-28T05:57:34.153Z</updated>
+  <updated>2020-02-29T15:20:42.348Z</updated>
   <id>http://peterpaaan.github.io/</id>
   
   <author>
@@ -15,6 +15,29 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Python装饰器理解</title>
+    <link href="http://peterpaaan.github.io/2020/02/29/intro-to-decorator/"/>
+    <id>http://peterpaaan.github.io/2020/02/29/intro-to-decorator/</id>
+    <published>2020-02-29T11:27:27.628Z</published>
+    <updated>2020-02-29T15:20:42.348Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h2 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言&quot;&gt;&lt;/a&gt;前言&lt;/h2&gt;&lt;p&gt;本文根据&lt;a
+        
+      
+    
+    </summary>
+    
+    
+    
+  </entry>
   
   <entry>
     <title>Hello World Hexo Page</title>
