@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://peterpaaan.github.io/"/>
-  <updated>2020-03-02T08:37:18.930Z</updated>
+  <updated>2020-03-02T08:41:35.673Z</updated>
   <id>http://peterpaaan.github.io/</id>
   
   <author>
@@ -17,11 +17,11 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>pyargs</title>
+    <title>Python中的*args和**kwargs</title>
     <link href="http://peterpaaan.github.io/2020/03/02/pyargs/"/>
     <id>http://peterpaaan.github.io/2020/03/02/pyargs/</id>
     <published>2020-03-02T07:30:21.992Z</published>
-    <updated>2020-03-02T08:37:18.930Z</updated>
+    <updated>2020-03-02T08:41:35.673Z</updated>
     
     <summary type="html">
     
