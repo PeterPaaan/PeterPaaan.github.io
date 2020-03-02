@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://peterpaaan.github.io/"/>
-  <updated>2020-02-29T15:43:00.019Z</updated>
+  <updated>2020-03-02T08:37:18.930Z</updated>
   <id>http://peterpaaan.github.io/</id>
   
   <author>
@@ -15,6 +15,29 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>pyargs</title>
+    <link href="http://peterpaaan.github.io/2020/03/02/pyargs/"/>
+    <id>http://peterpaaan.github.io/2020/03/02/pyargs/</id>
+    <published>2020-03-02T07:30:21.992Z</published>
+    <updated>2020-03-02T08:37:18.930Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;p&gt;经常使用Python的话，相信你在函数参数里已经频繁遇见*&lt;em&gt;args&lt;/em&gt;和**&lt;em&gt;kwargs&lt;/em&gt;这两个符号。最常见的场景比如调包侠们经常要查看某个库里面某个接口接受那些参数，一连串的参数后面经常以这两个参数结尾。下面简单介绍下参数这种写法到底是啥意思
+        
+      
+    
+    </summary>
+    
+    
+    
+  </entry>
   
   <entry>
     <title>Python装饰器理解</title>
@@ -44,7 +67,7 @@
     <link href="http://peterpaaan.github.io/2020/02/27/hello-world/"/>
     <id>http://peterpaaan.github.io/2020/02/27/hello-world/</id>
     <published>2020-02-27T15:45:25.453Z</published>
-    <updated>2020-03-02T02:23:12.050Z</updated>
+    <updated>2020-03-02T08:38:07.445Z</updated>
     
     <summary type="html">
     
@@ -52,7 +75,7 @@
       
         
         
-          &lt;p&gt;2019年年底，COVID-19全面爆发；全国限制出现，于是有了这个博客…  &lt;/p&gt;
+          &lt;p&gt;2019年年底，COVID-19全面爆发；全国限制出行，于是有了这个博客…  &lt;/p&gt;
 &lt;p&gt;Welcome to &lt;a href=&quot;https://hexo.io/&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;Hexo&lt;/a&gt;! This is
         
       
