@@ -617,7 +617,7 @@ TypeError<span class="token punctuation">:</span> all_sum<span class="token punc
 <pre class="line-numbers language-python"><code class="language-python">all_sum<span class="token punctuation">(</span><span class="token operator">*</span>num_list<span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <p>输出</p>
 <pre class="line-numbers language-python"><code class="language-python"><span class="token number">8</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-<p>所以，<u><strong>在定义函数时<code>*</code>将所有参数打包成一个<code>tuple</code>; 而参数被函数调用时，<code>*</code>将<code>list</code>或<code>tuple</code>解包成单个元素。</strong></u>据说在其他语言里这个星号叫spalt运算符，感兴趣的童鞋可以自行觅食。<br>&nbsp;<br>搞懂了<code>*args</code>，<code>**kwargs</code>就不难理解了。因为只要你稍微熟悉Python，应该就知道位置参数和关键字参数；不过这儿<code>*args</code>一个星号和<code>*kwargs</code>两个星号还是有一些区别的，继续看例子。  </p>
+<p>所以，<u><strong>在定义函数时<code>*</code>将所有参数打包成一个<code>tuple</code>; 而参数被函数调用时，<code>*</code>将<code>list</code>或<code>tuple</code>解包成单个元素。</strong></u>据说在其他语言里这个星号叫splat运算符，感兴趣的童鞋可以自行觅食。<br>&nbsp;<br>搞懂了<code>*args</code>，<code>**kwargs</code>就不难理解了。因为只要你稍微熟悉Python，应该就知道位置参数和关键字参数；不过这儿<code>*args</code>一个星号和<code>*kwargs</code>两个星号还是有一些区别的，继续看例子。  </p>
 <pre class="line-numbers language-python"><code class="language-python"><span class="token keyword">def</span> <span class="token function">add_age_by_name</span><span class="token punctuation">(</span>name1<span class="token punctuation">,</span> name2<span class="token punctuation">)</span><span class="token punctuation">:</span>
     <span class="token keyword">return</span> name1 <span class="token operator">+</span> name2
 
