@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://peterpaaan.github.io/"/>
-  <updated>2020-03-02T09:33:33.358Z</updated>
+  <updated>2020-03-03T02:34:25.058Z</updated>
   <id>http://peterpaaan.github.io/</id>
   
   <author>
@@ -15,6 +15,29 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Python多重继承</title>
+    <link href="http://peterpaaan.github.io/2020/03/03/multi-inherit/"/>
+    <id>http://peterpaaan.github.io/2020/03/03/multi-inherit/</id>
+    <published>2020-03-03T02:24:50.224Z</published>
+    <updated>2020-03-03T02:34:25.058Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;p&gt;多重继承适合处理对象具有多重层次(包含)关系且有一定复杂度的任务。例如，你利用一些数据做机器学习。需要先预处理数据，然后丢给一个特定的模型，最后你可能要把结果可视化。而(假设)处理数据有A、B两种方法，模型也有A、B
+        
+      
+    
+    </summary>
+    
+    
+    
+  </entry>
   
   <entry>
     <title>Python中的*args和**kwargs</title>

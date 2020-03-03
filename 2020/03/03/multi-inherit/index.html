@@ -4,8 +4,8 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="Python中的*args和**kwargs, 逍遥子">
-    <meta name="description" content="经常使用Python的话，相信你在函数参数里已经频繁遇见*args和**kwargs这两个符号。最常见的场景比如调包侠们经常要查看某个库里面某个接口接受那些参数，一连串的参数后面经常以这两个参数结尾。下面简单介绍下参数这种写法到底是啥意思。">
+    <meta name="keywords" content="Python多重继承, 逍遥子">
+    <meta name="description" content="多重继承适合处理对象具有多重层次(包含)关系且有一定复杂度的任务。例如，你利用一些数据做机器学习。需要先预处理数据，然后丢给一个特定的模型，最后你可能要把结果可视化。而(假设)处理数据有A、B两种方法，模型也有A、B 两种，可视化方法有一种">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -13,7 +13,7 @@
     <meta name="format-detection" content="telephone=no">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <title>Python中的*args和**kwargs | 逍遥子</title>
+    <title>Python多重继承 | 逍遥子</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -412,12 +412,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/9.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/1.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">Python中的*args和**kwargs</h1>
+                    <h1 class="description center-align post-title">Python多重继承</h1>
                 </div>
             </div>
         </div>
@@ -546,21 +546,21 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2020-03-02
+                    2020-03-03
                 </div>
                 
 
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2020-03-02
+                    2020-03-03
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    894
+                    522
                 </div>
                 
 
@@ -573,74 +573,68 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <p>经常使用Python的话，相信你在函数参数里已经频繁遇见*<em>args</em>和**<em>kwargs</em>这两个符号。最常见的场景比如调包侠们经常要查看某个库里面某个接口接受那些参数，一连串的参数后面经常以这两个参数结尾。下面简单介绍下参数这种写法到底是啥意思。<br>&nbsp;<br>先看个求和函数的例子：</p>
-<pre class="line-numbers language-python"><code class="language-python"><span class="token keyword">def</span> <span class="token function">all_sum</span><span class="token punctuation">(</span>a<span class="token punctuation">,</span> b<span class="token punctuation">)</span><span class="token punctuation">:</span>
-    <span class="token keyword">return</span> sum<span class="token punctuation">(</span>a <span class="token operator">+</span> b<span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
-<p>输入  </p>
-<pre class="line-numbers language-python"><code class="language-python">all_sum<span class="token punctuation">(</span><span class="token number">3</span><span class="token punctuation">,</span> <span class="token number">5</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-<p>结果  </p>
-<pre class="line-numbers language-python"><code class="language-python"><span class="token number">8</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-<p>如果这个函数是你写给别人用的API，而人家并不知道这里只能输入两个参数，于是他输入了：  </p>
-<pre class="line-numbers language-python"><code class="language-python">all_sum<span class="token punctuation">(</span><span class="token number">3</span><span class="token punctuation">,</span> <span class="token number">5</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">,</span> <span class="token operator">-</span><span class="token number">6</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-<p>那么必然会报错：  </p>
-<pre class="line-numbers language-python"><code class="language-python"><span class="token operator">-</span><span class="token operator">-</span><span class="token operator">-</span><span class="token operator">-</span><span class="token operator">-</span><span class="token operator">-</span><span class="token operator">-</span><span class="token operator">-</span><span class="token operator">-</span><span class="token operator">-</span><span class="token operator">-</span><span class="token operator">-</span><span class="token operator">-</span><span class="token operator">-</span><span class="token operator">-</span><span class="token operator">-</span><span class="token operator">-</span><span class="token operator">-</span><span class="token operator">-</span><span class="token operator">-</span><span class="token operator">-</span><span class="token operator">-</span><span class="token operator">-</span><span class="token operator">-</span><span class="token operator">-</span><span class="token operator">-</span><span class="token operator">-</span><span class="token operator">-</span><span class="token operator">-</span><span class="token operator">-</span><span class="token operator">-</span><span class="token operator">-</span><span class="token operator">-</span><span class="token operator">-</span><span class="token operator">-</span><span class="token operator">-</span><span class="token operator">-</span><span class="token operator">-</span><span class="token operator">-</span><span class="token operator">-</span><span class="token operator">-</span><span class="token operator">-</span><span class="token operator">-</span><span class="token operator">-</span><span class="token operator">-</span><span class="token operator">-</span><span class="token operator">-</span><span class="token operator">-</span><span class="token operator">-</span><span class="token operator">-</span><span class="token operator">-</span><span class="token operator">-</span><span class="token operator">-</span><span class="token operator">-</span><span class="token operator">-</span><span class="token operator">-</span><span class="token operator">-</span><span class="token operator">-</span><span class="token operator">-</span>
-TypeError                          Traceback <span class="token punctuation">(</span>most recent call last<span class="token punctuation">)</span>
-<span class="token operator">&lt;</span>ipython<span class="token operator">-</span>input<span class="token number">-97</span><span class="token operator">-</span><span class="token number">70e77b81c288</span><span class="token operator">></span> <span class="token keyword">in</span> <span class="token operator">&lt;</span>module<span class="token operator">></span>
-<span class="token operator">-</span><span class="token operator">-</span><span class="token operator">-</span><span class="token operator">-</span><span class="token operator">></span> <span class="token number">1</span> all_sum<span class="token punctuation">(</span><span class="token number">3</span><span class="token punctuation">,</span> <span class="token number">5</span><span class="token punctuation">,</span> <span class="token operator">-</span><span class="token number">0</span><span class="token punctuation">,</span> <span class="token operator">-</span><span class="token number">6</span><span class="token punctuation">)</span>
+                <p>多重继承适合处理对象具有多重层次(包含)关系且有一定复杂度的任务。例如，你利用一些数据做机器学习。需要先预处理数据，然后丢给一个特定的模型，最后你可能要把结果可视化。而(假设)处理数据有A、B两种方法，模型也有A、B 两种，可视化方法有一种。可以把整个pipeline写成下面这种形式：  </p>
+<pre class="line-numbers language-python"><code class="language-python"><span class="token comment" spellcheck="true"># 预处理方法类</span>
+<span class="token keyword">class</span> <span class="token class-name">PreprocessorA</span><span class="token punctuation">:</span>
+    <span class="token keyword">def</span> <span class="token function">preprocess</span><span class="token punctuation">(</span>self<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">'preprocessing by A'</span><span class="token punctuation">)</span>
 
-TypeError<span class="token punctuation">:</span> all_sum<span class="token punctuation">(</span><span class="token punctuation">)</span> takes <span class="token number">2</span> positional arguments but <span class="token number">4</span> were given<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<p>all_sum()只能接收2个位置参数，但是你给了4个。<br>&nbsp;  </p>
-<p>这时候Python提供了这样一种运算符，我们将all_sum()函数改进一下：  </p>
-<pre class="line-numbers language-python"><code class="language-python"><span class="token keyword">def</span> <span class="token function">all_sum_v2</span><span class="token punctuation">(</span><span class="token operator">*</span>args<span class="token punctuation">)</span><span class="token punctuation">:</span>
-    <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">'arg type: {)'</span><span class="token punctuation">.</span>format<span class="token punctuation">(</span>type<span class="token punctuation">(</span>args<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
-    <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">'args: '</span><span class="token punctuation">.</span>format<span class="token punctuation">(</span>args<span class="token punctuation">)</span><span class="token punctuation">)</span>
-    <span class="token keyword">print</span><span class="token punctuation">(</span>agrs<span class="token punctuation">[</span><span class="token number">3</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
-    <span class="token keyword">return</span> sum<span class="token punctuation">(</span>args<span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<p>我们再输入任意个参数：</p>
-<pre class="line-numbers language-python"><code class="language-python">all_sum_v2<span class="token punctuation">(</span><span class="token number">3</span><span class="token punctuation">,</span> <span class="token number">5</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">,</span> <span class="token operator">-</span><span class="token number">4</span><span class="token punctuation">,</span> <span class="token number">6</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-<pre class="line-numbers language-python"><code class="language-python">type<span class="token operator">&lt;</span><span class="token keyword">class</span> <span class="token string">'tuple'</span><span class="token operator">></span>
-args<span class="token punctuation">:</span> <span class="token punctuation">(</span><span class="token number">3</span><span class="token punctuation">,</span> <span class="token number">5</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">,</span> <span class="token operator">-</span><span class="token number">4</span><span class="token punctuation">,</span> <span class="token number">6</span><span class="token punctuation">)</span>
-<span class="token operator">-</span><span class="token number">4</span>
-<span class="token number">11</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
-<p>为了搞清楚args到底是啥，我特意在其中多加了3个<code>print</code>。输出第一行说明args的类型是一个<code>tuple</code>，第二、三行看出<code>args</code>就是你所输入的参数组成的一个<code>tuple</code>。<br><strong>这说明在定义函数时，<code>*args</code>将你的所有输入组织成一个<code>tuple</code>。</strong><br>&nbsp;<br>我们再来第一个版本的<code>all_sum()</code>函数，假如我现在的输入是一个列表<code>[3， 5]</code>，如果我直接把列表作为参数： </p>
-<pre class="line-numbers language-python"><code class="language-python">num_list <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token number">3</span><span class="token punctuation">,</span> <span class="token number">5</span><span class="token punctuation">]</span>
+<span class="token keyword">class</span> <span class="token class-name">PreprocessorB</span><span class="token punctuation">:</span>
+    <span class="token keyword">def</span> <span class="token function">preprocess</span><span class="token punctuation">(</span>self<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">'preprocessing by B'</span><span class="token punctuation">)</span>
+<span class="token comment" spellcheck="true"># 模型类        </span>
+<span class="token keyword">class</span> <span class="token class-name">ModelA</span><span class="token punctuation">:</span>
+    <span class="token keyword">def</span> <span class="token function">fit</span><span class="token punctuation">(</span>self<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">'fitting by A'</span><span class="token punctuation">)</span>
 
-all_sum<span class="token punctuation">(</span>num_list<span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
-<p>这时会报错：  </p>
-<pre class="line-numbers language-python"><code class="language-python"><span class="token operator">-</span><span class="token operator">-</span><span class="token operator">-</span><span class="token operator">-</span><span class="token operator">-</span><span class="token operator">-</span><span class="token operator">-</span><span class="token operator">-</span><span class="token operator">-</span><span class="token operator">-</span><span class="token operator">-</span><span class="token operator">-</span><span class="token operator">-</span><span class="token operator">-</span><span class="token operator">-</span><span class="token operator">-</span><span class="token operator">-</span><span class="token operator">-</span><span class="token operator">-</span><span class="token operator">-</span><span class="token operator">-</span><span class="token operator">-</span><span class="token operator">-</span><span class="token operator">-</span><span class="token operator">-</span><span class="token operator">-</span><span class="token operator">-</span><span class="token operator">-</span><span class="token operator">-</span><span class="token operator">-</span><span class="token operator">-</span><span class="token operator">-</span><span class="token operator">-</span><span class="token operator">-</span><span class="token operator">-</span><span class="token operator">-</span><span class="token operator">-</span><span class="token operator">-</span><span class="token operator">-</span><span class="token operator">-</span><span class="token operator">-</span><span class="token operator">-</span><span class="token operator">-</span><span class="token operator">-</span><span class="token operator">-</span><span class="token operator">-</span><span class="token operator">-</span><span class="token operator">-</span><span class="token operator">-</span><span class="token operator">-</span><span class="token operator">-</span><span class="token operator">-</span><span class="token operator">-</span><span class="token operator">-</span><span class="token operator">-</span><span class="token operator">-</span>
-TypeError                         Traceback <span class="token punctuation">(</span>most recent call last<span class="token punctuation">)</span>
-<span class="token operator">&lt;</span>ipython<span class="token operator">-</span>input<span class="token number">-98</span><span class="token operator">-</span><span class="token number">52a2b35e240d</span><span class="token operator">></span> <span class="token keyword">in</span> <span class="token operator">&lt;</span>module<span class="token operator">></span>
-<span class="token operator">-</span><span class="token operator">-</span><span class="token operator">-</span><span class="token operator">-</span><span class="token operator">></span> <span class="token number">1</span> all_sum<span class="token punctuation">(</span>num_list<span class="token punctuation">)</span>
+<span class="token keyword">class</span> <span class="token class-name">ModelB</span><span class="token punctuation">:</span>
+    <span class="token keyword">def</span> <span class="token function">fit</span><span class="token punctuation">(</span>self<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">'fitting by B'</span><span class="token punctuation">)</span>
+<span class="token comment" spellcheck="true"># 可视化类        </span>
+<span class="token keyword">class</span> <span class="token class-name">Visualization</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token keyword">def</span> <span class="token function">preprocess</span><span class="token punctuation">(</span>self<span class="token punctuation">)</span><span class="token punctuation">:</span>  <span class="token comment" spellcheck="true"># 预处理方法重载 </span>
+        <span class="token keyword">pass</span>
 
-TypeError<span class="token punctuation">:</span> all_sum<span class="token punctuation">(</span><span class="token punctuation">)</span> missing <span class="token number">1</span> required positional argument<span class="token punctuation">:</span> <span class="token string">'b'</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<p>结果并不是我们所期望的去求列表里面元素的和。这时我们可以这样写：  </p>
-<pre class="line-numbers language-python"><code class="language-python">all_sum<span class="token punctuation">(</span><span class="token operator">*</span>num_list<span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-<p>输出</p>
-<pre class="line-numbers language-python"><code class="language-python"><span class="token number">8</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-<p>所以，<u><strong>在定义函数时<code>*</code>将所有参数打包成一个<code>tuple</code>; 而参数被函数调用时，<code>*</code>将<code>list</code>或<code>tuple</code>解包成单个元素。</strong></u>据说在其他语言里这个星号叫splat运算符，感兴趣的童鞋可以自行觅食。<br>&nbsp;<br>搞懂了<code>*args</code>，<code>**kwargs</code>就不难理解了。因为只要你稍微熟悉Python，应该就知道位置参数和关键字参数；不过这儿<code>*args</code>一个星号和<code>*kwargs</code>两个星号还是有一些区别的，继续看例子。  </p>
-<pre class="line-numbers language-python"><code class="language-python"><span class="token keyword">def</span> <span class="token function">add_age_by_name</span><span class="token punctuation">(</span>name1<span class="token punctuation">,</span> name2<span class="token punctuation">)</span><span class="token punctuation">:</span>
-    <span class="token keyword">return</span> name1 <span class="token operator">+</span> name2
+    <span class="token keyword">def</span> <span class="token function">fit</span><span class="token punctuation">(</span>self<span class="token punctuation">)</span><span class="token punctuation">:</span>  <span class="token comment" spellcheck="true"># 模型方法重载</span>
+        <span class="token keyword">pass</span>
 
-add_age_by_name<span class="token punctuation">(</span>name1<span class="token operator">=</span><span class="token number">22</span><span class="token punctuation">,</span> name2<span class="token operator">=</span><span class="token number">30</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
-<p>得到输出： </p>
-<pre class="line-numbers language-python"><code class="language-python"><span class="token number">52</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-<p>如果你输入超过2个关键字参数，比如<code>add_age_by_name(name1=22, name2=30,name3=7)</code>，那毫无疑问会报错。<br>不妨先把参数写成一个字典： </p>
-<pre class="line-numbers language-python"><code class="language-python">parameters <span class="token operator">=</span> <span class="token punctuation">{</span>
-    <span class="token string">'name1'</span><span class="token punctuation">:</span> <span class="token number">22</span><span class="token punctuation">,</span>
-    <span class="token string">'name2'</span><span class="token punctuation">:</span> <span class="token number">30</span>
-<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
-<p>然后我们这样传入：  </p>
-<pre class="line-numbers language-python"><code class="language-python">add_age_by_name<span class="token punctuation">(</span><span class="token operator">**</span>parameters<span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-<p>得到同样正确的输出： </p>
-<pre class="line-numbers language-python"><code class="language-python"><span class="token number">52</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-<p>可以看到<code>**</code>将字典中的<strong>key-value对</strong>解包成函数的<strong>参数名-参数值对</strong>了。那么，我们类比刚刚的<code>*args</code>将<code>add_age_by_name()</code>作改进：  </p>
-<pre class="line-numbers language-python"><code class="language-python"><span class="token keyword">def</span> <span class="token function">add_age_by_name</span><span class="token punctuation">(</span><span class="token operator">**</span>info<span class="token punctuation">)</span><span class="token punctuation">:</span>
-    <span class="token keyword">return</span> sum<span class="token punctuation">(</span><span class="token punctuation">[</span>value <span class="token keyword">for</span> key<span class="token punctuation">,</span> value <span class="token keyword">in</span> info<span class="token punctuation">.</span>items<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
+    <span class="token keyword">def</span> <span class="token function">visualize</span><span class="token punctuation">(</span>self<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">'vidualizing...'</span><span class="token punctuation">)</span>
+        <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">'vidualization completed.'</span><span class="token punctuation">)</span>
 
-add_age_by_name<span class="token punctuation">(</span>name1<span class="token operator">=</span><span class="token number">20</span><span class="token punctuation">,</span> name2<span class="token operator">=</span><span class="token number">30</span><span class="token punctuation">,</span> name3<span class="token operator">=</span><span class="token number">18</span><span class="token punctuation">,</span> name_one_more<span class="token operator">=</span><span class="token number">5</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
-<p>得到输出： </p>
-<pre class="line-numbers language-python"><code class="language-python"><span class="token number">73</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-<p>同样总结一下，定义函数时，<code>**</code>将输入的关键字参数的参数名-参数值组织成一个字典；而被函数调用时，<code>**</code>将参数字典中的<strong>key-value对</strong>解包成函数的<strong>参数名-参数值对</strong>。<br>&nbsp;<br>这样，<code>*args</code>和<code>**kwargs</code>就讲完了。</p>
+    <span class="token keyword">def</span> <span class="token function">run</span><span class="token punctuation">(</span>self<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        self<span class="token punctuation">.</span>preprocess<span class="token punctuation">(</span><span class="token punctuation">)</span>
+        self<span class="token punctuation">.</span>fit<span class="token punctuation">(</span><span class="token punctuation">)</span>
+        self<span class="token punctuation">.</span>visualize<span class="token punctuation">(</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>每一个步骤中可能的方法写好之后，我们可以根据实际需要来任意组合这些步骤: </p>
+<pre class="line-numbers language-python"><code class="language-python"><span class="token comment" spellcheck="true"># 使用A方法预处理， A模型拟合，再可视化的处理器</span>
+<span class="token keyword">class</span> <span class="token class-name">ProcessorA</span><span class="token punctuation">(</span>PreprocessorA<span class="token punctuation">,</span> ModelA<span class="token punctuation">,</span> Visualization<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token keyword">pass</span>
+
+<span class="token comment" spellcheck="true"># 使用B方法预处理， B模型拟合，再可视化</span>
+<span class="token keyword">class</span> <span class="token class-name">ProcessorB</span><span class="token punctuation">(</span>PreprocessorB<span class="token punctuation">,</span> ModelB<span class="token punctuation">,</span> Visualization<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token keyword">pass</span>
+
+<span class="token comment" spellcheck="true"># 使用A方法预处理， B模型拟合，再可视化</span>
+<span class="token keyword">class</span> <span class="token class-name">ProcessorC</span><span class="token punctuation">(</span>PreprocessorA<span class="token punctuation">,</span> ModelB<span class="token punctuation">,</span> Visualization<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token keyword">pass</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>对于某个数据集，如果适合使用A方法预处理， A模型拟合，再可视化。那么我们只需实例化对应的处理器类： </p>
+<pre class="line-numbers language-python"><code class="language-python">a <span class="token operator">=</span> ProcessorA<span class="token punctuation">(</span><span class="token punctuation">)</span>
+a<span class="token punctuation">.</span>run<span class="token punctuation">(</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<p>输出：</p>
+<pre class="line-numbers language-python"><code class="language-python">preprocessing by A
+fitting by A
+vidualizing<span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span>
+vidualization completed<span class="token punctuation">.</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+<p>再比如，实例化处理器C：  </p>
+<pre class="line-numbers language-python"><code class="language-python">dataset_c <span class="token operator">=</span> ProcessorC<span class="token punctuation">(</span><span class="token punctuation">)</span>
+dataset_c<span class="token punctuation">.</span>run<span class="token punctuation">(</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<p>输出：</p>
+<pre class="line-numbers language-python"><code class="language-python">preprocessing by A
+fitting by B
+vidualizing<span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span>
+vidualization completed<span class="token punctuation">.</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+<p>如果针对每一种情况(处理器)采用纯函数去写这些组合，那么当每个环节可能的选择比较多的时候，你要写的函数数量将大大增加，而多重类继承这可以轻松组合这些环节。</p>
 <script>
         document.querySelectorAll('.github-emoji')
           .forEach(el => {
@@ -684,7 +678,7 @@ add_age_by_name<span class="token punctuation">(</span>name1<span class="token o
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="http://peterpaaan.github.io/2020/03/02/pyargs/">http://peterpaaan.github.io/2020/03/02/pyargs/</a>
+                    <a href="http://peterpaaan.github.io/2020/03/03/multi-inherit/">http://peterpaaan.github.io/2020/03/03/multi-inherit/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -885,9 +879,10 @@ add_age_by_name<span class="token punctuation">(</span>name1<span class="token o
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+                <i class="far fa-dot-circle"></i>&nbsp;本篇
+            </div>
             <div class="card">
                 <a href="/2020/03/03/multi-inherit/">
                     <div class="card-image">
@@ -905,9 +900,9 @@ add_age_by_name<span class="token punctuation">(</span>name1<span class="token o
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2020-03-03
-                        </span>
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2020-03-03
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-user fa-fw"></i>
@@ -916,6 +911,7 @@ add_age_by_name<span class="token punctuation">(</span>name1<span class="token o
                         </span>
                     </div>
                 </div>
+
                 
             </div>
         </div>
@@ -926,24 +922,24 @@ add_age_by_name<span class="token punctuation">(</span>name1<span class="token o
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2020/02/29/intro-to-decorator/">
+                <a href="/2020/03/02/pyargs/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/2.jpg" class="responsive-img" alt="Python装饰器理解">
+                        <img src="/medias/featureimages/9.jpg" class="responsive-img" alt="Python中的*args和**kwargs">
                         
-                        <span class="card-title">Python装饰器理解</span>
+                        <span class="card-title">Python中的*args和**kwargs</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            前言本文根据这儿的学习资源加上自己的理解整理而成。本文适合对装饰器完全陌生的小白，为了搞清来龙去脉，会比较啰嗦，请读者根据需要选择食用。如果你只想看一句话：在某个函数func上面加个装饰器(这本质也是一个函数)，你会原封不动的得到这个函数f
+                            经常使用Python的话，相信你在函数参数里已经频繁遇见*args和**kwargs这两个符号。最常见的场景比如调包侠们经常要查看某个库里面某个接口接受那些参数，一连串的参数后面经常以这两个参数结尾。下面简单介绍下参数这种写法到底是啥意思。
                         
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2020-02-29
+                                <i class="far fa-clock fa-fw icon-date"></i>2020-03-02
                             </span>
                         <span class="publish-author">
                             
