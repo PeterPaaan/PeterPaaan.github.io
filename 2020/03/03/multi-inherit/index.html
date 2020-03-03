@@ -560,7 +560,7 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    522
+                    531
                 </div>
                 
 
@@ -607,19 +607,19 @@
         self<span class="token punctuation">.</span>fit<span class="token punctuation">(</span><span class="token punctuation">)</span>
         self<span class="token punctuation">.</span>visualize<span class="token punctuation">(</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>每一个步骤中可能的方法写好之后，我们可以根据实际需要来任意组合这些步骤: </p>
-<pre class="line-numbers language-python"><code class="language-python"><span class="token comment" spellcheck="true"># 使用A方法预处理， A模型拟合，再可视化的处理器</span>
-<span class="token keyword">class</span> <span class="token class-name">ProcessorA</span><span class="token punctuation">(</span>PreprocessorA<span class="token punctuation">,</span> ModelA<span class="token punctuation">,</span> Visualization<span class="token punctuation">)</span><span class="token punctuation">:</span>
+<pre class="line-numbers language-python"><code class="language-python"><span class="token comment" spellcheck="true"># 使用A方法预处理， A模型拟合，再可视化的学习器</span>
+<span class="token keyword">class</span> <span class="token class-name">LearnerA</span><span class="token punctuation">(</span>PreprocessorA<span class="token punctuation">,</span> ModelA<span class="token punctuation">,</span> Visualization<span class="token punctuation">)</span><span class="token punctuation">:</span>
     <span class="token keyword">pass</span>
 
-<span class="token comment" spellcheck="true"># 使用B方法预处理， B模型拟合，再可视化</span>
-<span class="token keyword">class</span> <span class="token class-name">ProcessorB</span><span class="token punctuation">(</span>PreprocessorB<span class="token punctuation">,</span> ModelB<span class="token punctuation">,</span> Visualization<span class="token punctuation">)</span><span class="token punctuation">:</span>
+<span class="token comment" spellcheck="true"># 使用B方法预处理， B模型拟合，再可视化的学习器</span>
+<span class="token keyword">class</span> <span class="token class-name">LearnerB</span><span class="token punctuation">(</span>PreprocessorB<span class="token punctuation">,</span> ModelB<span class="token punctuation">,</span> Visualization<span class="token punctuation">)</span><span class="token punctuation">:</span>
     <span class="token keyword">pass</span>
 
-<span class="token comment" spellcheck="true"># 使用A方法预处理， B模型拟合，再可视化</span>
-<span class="token keyword">class</span> <span class="token class-name">ProcessorC</span><span class="token punctuation">(</span>PreprocessorA<span class="token punctuation">,</span> ModelB<span class="token punctuation">,</span> Visualization<span class="token punctuation">)</span><span class="token punctuation">:</span>
+<span class="token comment" spellcheck="true"># 使用A方法预处理， B模型拟合，再可视化的学习器</span>
+<span class="token keyword">class</span> <span class="token class-name">LearnerC</span><span class="token punctuation">(</span>PreprocessorA<span class="token punctuation">,</span> ModelB<span class="token punctuation">,</span> Visualization<span class="token punctuation">)</span><span class="token punctuation">:</span>
     <span class="token keyword">pass</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<p>对于某个数据集，如果适合使用A方法预处理， A模型拟合，再可视化。那么我们只需实例化对应的处理器类： </p>
-<pre class="line-numbers language-python"><code class="language-python">a <span class="token operator">=</span> ProcessorA<span class="token punctuation">(</span><span class="token punctuation">)</span>
+<p>对于某个数据集，如果适合使用A方法预处理， A模型拟合，再可视化。那么我们只需实例化对应的学习器类： </p>
+<pre class="line-numbers language-python"><code class="language-python">a <span class="token operator">=</span> LearnerA<span class="token punctuation">(</span><span class="token punctuation">)</span>
 a<span class="token punctuation">.</span>run<span class="token punctuation">(</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
 <p>输出：</p>
 <pre class="line-numbers language-python"><code class="language-python">preprocessing by A
@@ -627,14 +627,14 @@ fitting by A
 vidualizing<span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span>
 vidualization completed<span class="token punctuation">.</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
 <p>再比如，实例化处理器C：  </p>
-<pre class="line-numbers language-python"><code class="language-python">dataset_c <span class="token operator">=</span> ProcessorC<span class="token punctuation">(</span><span class="token punctuation">)</span>
+<pre class="line-numbers language-python"><code class="language-python">dataset_c <span class="token operator">=</span> LearnerC<span class="token punctuation">(</span><span class="token punctuation">)</span>
 dataset_c<span class="token punctuation">.</span>run<span class="token punctuation">(</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
 <p>输出：</p>
 <pre class="line-numbers language-python"><code class="language-python">preprocessing by A
 fitting by B
 vidualizing<span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span>
 vidualization completed<span class="token punctuation">.</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
-<p>如果针对每一种情况(处理器)采用纯函数去写这些组合，那么当每个环节可能的选择比较多的时候，你要写的函数数量将大大增加，而多重类继承这可以轻松组合这些环节。</p>
+<p>如果针对每一种情况(不同的leaner)采用纯函数去写这些组合，那么当每个环节可能的选择比较多的时候，你要写的函数数量将大大增加，而多重类继承这可以轻松组合这些环节。</p>
 <script>
         document.querySelectorAll('.github-emoji')
           .forEach(el => {
